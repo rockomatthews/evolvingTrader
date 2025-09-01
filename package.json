@@ -1,0 +1,23 @@
+{
+  "name": "evolvingtrader-dashboard",
+  "version": "1.0.0",
+  "description": "EvolvingTrader AI-Powered Trading Strategy Dashboard",
+  "main": "dashboard_vercel.py",
+  "scripts": {
+    "dev": "python dashboard_vercel.py",
+    "build": "echo 'No build step required'",
+    "start": "python dashboard_vercel.py"
+  },
+  "keywords": [
+    "trading",
+    "ai",
+    "dashboard",
+    "cryptocurrency",
+    "binance"
+  ],
+  "author": "EvolvingTrader",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

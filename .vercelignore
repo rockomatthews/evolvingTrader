@@ -1,0 +1,50 @@
+# Vercel ignore file
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.log
+.git
+.mypy_cache
+.pytest_cache
+.hypothesis
+
+# Development files
+*.md
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Data files
+data/
+logs/
+backtests/
+results/
+
+# Source code (only deploy dashboard)
+src/
+config.py
+main.py
+setup.py
+alembic.ini
+migrations/
+
+# Keep only dashboard files
+!dashboard_vercel.py
+!requirements-vercel.txt
+!vercel.json

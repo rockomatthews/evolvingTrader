@@ -130,6 +130,23 @@ Launch the real-time dashboard:
 python main.py dashboard
 ```
 
+### Deploy Dashboard to Vercel
+Deploy the dashboard as a hosted webpage:
+```bash
+# Install Vercel CLI
+npm install -g vercel
+
+# Deploy to Vercel
+vercel
+
+# Deploy to production
+vercel --prod
+```
+
+Your dashboard will be available at: `https://your-project-name.vercel.app`
+
+See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed deployment instructions.
+
 ## 📈 Strategy Architecture
 
 ### Multi-Strategy Framework
