@@ -16,10 +16,13 @@
 
 ### Step 2: Deploy to Vercel
 
-#### Option A: Using Vercel CLI
+#### Option A: Static HTML Dashboard (Recommended - Easiest)
 ```bash
 # Navigate to your project directory
 cd /Users/home/evolved/evolvingTrader
+
+# Rename the static dashboard
+mv static-dashboard.html index.html
 
 # Deploy to Vercel
 vercel
@@ -31,6 +34,15 @@ vercel
 # - Project name: evolvingtrader-dashboard
 # - Directory: ./
 # - Override settings? No
+```
+
+#### Option B: Python Dashboard (Advanced)
+```bash
+# Use the corrected vercel.json
+cp vercel-modern.json vercel.json
+
+# Deploy to Vercel
+vercel
 ```
 
 #### Option B: Using Vercel Dashboard
