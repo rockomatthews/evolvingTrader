@@ -35,7 +35,7 @@ class BinanceConfig(BaseSettings):
 class OpenAIConfig(BaseSettings):
     """OpenAI API configuration"""
     api_key: str = Field(env="OPENAI_API_KEY")
-    model: str = Field(default="gpt-4-turbo-preview")
+    model: str = Field(default="gpt-5")
     
     class Config:
         env_file = ".env"
@@ -43,7 +43,6 @@ class OpenAIConfig(BaseSettings):
 class PineconeConfig(BaseSettings):
     """Pinecone configuration"""
     api_key: str = Field(env="PINECONE_API_KEY")
-    environment: str = Field(env="PINECONE_ENVIRONMENT")
     index_name: str = Field(default="evolving-trader-memory")
     
     class Config:
@@ -51,7 +50,7 @@ class PineconeConfig(BaseSettings):
 
 class DatabaseConfig(BaseSettings):
     """Database configuration"""
-    url: str = Field(env="DATABASE_URL")
+    url: str = Field(env="NEON_DATABASE_URL")
     
     class Config:
         env_file = ".env"

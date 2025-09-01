@@ -24,7 +24,7 @@ EvolvingTrader is a sophisticated AI-powered trading system that uses Large Lang
 
 ### Technology Stack
 - **Binance API Integration**: Real-time trading and market data
-- **OpenAI GPT-4**: Strategy analysis and evolution
+- **OpenAI GPT-5**: Strategy analysis and evolution
 - **Pinecone**: Vector database for long-term memory
 - **Neon.tech PostgreSQL**: Persistent data storage for trades, performance, and logs
 - **Upstash Redis**: High-performance caching and real-time data streaming
@@ -87,7 +87,7 @@ Starting with $1,000, the system aims to:
    BINANCE_SECRET_KEY=your_binance_secret_key
    OPENAI_API_KEY=your_openai_api_key
    PINECONE_API_KEY=your_pinecone_api_key
-   DATABASE_URL=postgresql://username:password@ep-xxx-xxx.us-east-1.aws.neon.tech/evolvingtrader?sslmode=require
+   NEON_DATABASE_URL=postgresql://username:password@ep-xxx-xxx.us-east-1.aws.neon.tech/evolvingtrader?sslmode=require
    REDIS_URL=redis://default:password@redis-xxx.upstash.io:6379
    UPSTASH_REDIS_REST_URL=https://redis-xxx.upstash.io
    UPSTASH_REDIS_REST_TOKEN=your_upstash_redis_token
@@ -96,7 +96,7 @@ Starting with $1,000, the system aims to:
    **Database Setup (Neon.tech):**
    1. Go to [neon.tech](https://neon.tech)
    2. Create a new project
-   3. Copy the connection string to `DATABASE_URL` in your `.env` file
+   3. Copy the connection string to `NEON_DATABASE_URL` in your `.env` file
    4. The system will automatically create all necessary tables
    
    **Redis Setup (Upstash):**
@@ -173,7 +173,7 @@ The system combines four core strategies:
    - Volume breakouts
 
 ### LLM Integration
-- **Performance Analysis**: GPT-4 analyzes trading performance and identifies improvement areas
+- **Performance Analysis**: GPT-5 analyzes trading performance and identifies improvement areas
 - **Parameter Optimization**: Suggests parameter adjustments based on market conditions
 - **Risk Assessment**: Evaluates risk levels and provides recommendations
 - **Strategy Evolution**: Proposes new strategy combinations and approaches

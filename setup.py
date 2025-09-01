@@ -13,15 +13,48 @@ def check_python_version():
         sys.exit(1)
     print(f"✓ Python {sys.version_info.major}.{sys.version_info.minor} detected")
 
+def create_virtual_environment():
+    """Create virtual environment if it doesn't exist"""
+    venv_path = Path("venv")
+    if not venv_path.exists():
+        print("Creating virtual environment...")
+        try:
+            subprocess.check_call([sys.executable, "-m", "venv", "venv"])
+            print("✓ Virtual environment created")
+        except subprocess.CalledProcessError as e:
+            print(f"Error creating virtual environment: {e}")
+            sys.exit(1)
+    else:
+        print("✓ Virtual environment already exists")
+
+def get_pip_command():
+    """Get the correct pip command for the virtual environment"""
+    if sys.platform == "win32":
+        return str(Path("venv/Scripts/pip"))
+    else:
+        return str(Path("venv/bin/pip"))
+
 def install_requirements():
-    """Install required packages"""
+    """Install required packages in virtual environment"""
     print("Installing required packages...")
     try:
-        subprocess.check_call([sys.executable, "-m", "pip", "install", "-r", "requirements.txt"])
+        pip_cmd = get_pip_command()
+        subprocess.check_call([pip_cmd, "install", "-r", "requirements.txt"])
         print("✓ Requirements installed successfully")
     except subprocess.CalledProcessError as e:
         print(f"Error installing requirements: {e}")
-        sys.exit(1)
+        print("\nTrying alternative installation method...")
+        try:
+            # Try with --user flag as fallback
+            subprocess.check_call([sys.executable, "-m", "pip", "install", "--user", "-r", "requirements.txt"])
+            print("✓ Requirements installed successfully (user installation)")
+        except subprocess.CalledProcessError as e2:
+            print(f"Error with user installation: {e2}")
+            print("\nPlease try manually:")
+            print("1. Create virtual environment: python3 -m venv venv")
+            print("2. Activate it: source venv/bin/activate (Linux/Mac) or venv\\Scripts\\activate (Windows)")
+            print("3. Install requirements: pip install -r requirements.txt")
+            sys.exit(1)
 
 def create_env_file():
     """Create .env file from template"""
@@ -66,7 +99,7 @@ def check_api_keys():
         'BINANCE_SECRET_KEY',
         'OPENAI_API_KEY',
         'PINECONE_API_KEY',
-        'DATABASE_URL',
+        'NEON_DATABASE_URL',
         'REDIS_URL',
         'UPSTASH_REDIS_REST_URL',
         'UPSTASH_REDIS_REST_TOKEN'
@@ -85,7 +118,7 @@ def check_api_keys():
         print("\nFor Neon.tech database setup:")
         print("1. Go to https://neon.tech")
         print("2. Create a new project")
-        print("3. Copy the connection string to DATABASE_URL in .env")
+        print("3. Copy the connection string to NEON_DATABASE_URL in .env")
         print("\nFor Upstash Redis setup:")
         print("1. Go to https://upstash.com")
         print("2. Create a new Redis database")
@@ -128,6 +161,9 @@ def main():
     # Create directories
     create_directories()
     
+    # Create virtual environment
+    create_virtual_environment()
+    
     # Install requirements
     install_requirements()
     
@@ -143,10 +179,13 @@ def main():
     print("\n" + "=" * 50)
     print("Setup completed!")
     print("\nNext steps:")
-    print("1. Edit .env file with your API keys and Neon.tech database URL")
-    print("2. Run backtest: python main.py backtest")
-    print("3. Run live trading: python main.py live")
-    print("4. Run dashboard: python main.py dashboard")
+    print("1. Activate virtual environment:")
+    print("   - Linux/Mac: source venv/bin/activate")
+    print("   - Windows: venv\\Scripts\\activate")
+    print("2. Edit .env file with your API keys and Neon.tech database URL")
+    print("3. Run backtest: python main.py backtest")
+    print("4. Run live trading: python main.py live")
+    print("5. Run dashboard: python main.py dashboard")
     print("\nFor help: python main.py --help")
 
 if __name__ == "__main__":
