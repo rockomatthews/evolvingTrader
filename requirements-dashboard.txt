@@ -1,0 +1,13 @@
+# Requirements for dashboard only
+dash==2.14.2
+dash-bootstrap-components==1.5.0
+plotly==5.17.0
+pandas>=2.1.3,<2.3.0
+numpy>=1.24.3,<1.26.0
+python-dotenv==1.0.0
+redis==5.0.1
+upstash-redis==1.0.0
+sqlalchemy==2.0.23
+psycopg2-binary==2.9.9
+neon-connector==0.0.1
+httpx==0.25.2

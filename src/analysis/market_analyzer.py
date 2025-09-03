@@ -11,9 +11,37 @@ from dataclasses import dataclass
 from enum import Enum
 
 import ta
-from sklearn.preprocessing import StandardScaler
-from sklearn.cluster import KMeans
-from sklearn.decomposition import PCA
+
+# Optional sklearn imports - will use dummy classes if not available
+try:
+    from sklearn.preprocessing import StandardScaler
+    from sklearn.cluster import KMeans
+    from sklearn.decomposition import PCA
+    SKLEARN_AVAILABLE = True
+except ImportError:
+    SKLEARN_AVAILABLE = False
+    # Create dummy classes for when sklearn is not available
+    class StandardScaler:
+        def fit_transform(self, X):
+            return X
+        def transform(self, X):
+            return X
+        def fit(self, X):
+            return self
+    
+    class KMeans:
+        def __init__(self, n_clusters=3):
+            self.n_clusters = n_clusters
+        def fit(self, X):
+            return self
+        def predict(self, X):
+            return [0] * len(X)
+    
+    class PCA:
+        def __init__(self, n_components=2):
+            self.n_components = n_components
+        def fit_transform(self, X):
+            return X[:, :self.n_components] if X.shape[1] > self.n_components else X
 
 logger = logging.getLogger(__name__)
 

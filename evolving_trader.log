@@ -1,0 +1,26 @@
+2025-09-02 15:24:40,441 - __main__ - INFO - Starting EvolvingTrader in BACKTEST mode
+2025-09-02 15:24:40,441 - src.backtesting.backtester - INFO - Starting backtest for BTCUSDT from 2025-06-04 15:24:40.441951 to 2025-09-02 15:24:40.441957
+2025-09-02 15:24:41,031 - src.backtesting.backtester - ERROR - Error generating signals for backtest: name 'current_price' is not defined
+2025-09-02 15:24:44,754 - src.backtesting.backtester - ERROR - Error generating signals for backtest: name 'current_price' is not defined
+2025-09-02 15:24:44,762 - src.backtesting.backtester - ERROR - Error generating signals for backtest: name 'current_price' is not defined
+2025-09-02 15:24:44,771 - src.backtesting.backtester - ERROR - Error generating signals for backtest: name 'current_price' is not defined
+2025-09-02 15:24:46,719 - src.backtesting.backtester - ERROR - Error generating signals for backtest: name 'current_price' is not defined
+2025-09-02 15:24:54,190 - src.backtesting.backtester - ERROR - Error generating signals for backtest: name 'current_price' is not defined
+2025-09-02 15:24:56,135 - src.backtesting.backtester - ERROR - Error generating signals for backtest: name 'current_price' is not defined
+2025-09-02 15:24:56,320 - src.backtesting.backtester - ERROR - Error generating signals for backtest: name 'current_price' is not defined
+2025-09-02 15:24:57,806 - src.backtesting.backtester - ERROR - Error generating signals for backtest: name 'current_price' is not defined
+2025-09-02 15:24:59,072 - src.backtesting.backtester - INFO - Backtest completed: 0.00% return, 0 trades, 0.0% win rate
+2025-09-02 15:24:59,074 - src.backtesting.backtester - INFO - Backtest results saved to backtest_results_BTCUSDT_20250902_152459.json
+2025-09-02 15:42:08,816 - __main__ - INFO - Starting EvolvingTrader in BACKTEST mode
+2025-09-02 15:42:08,817 - src.backtesting.backtester - INFO - Starting backtest for BTCUSDT from 2025-06-04 15:42:08.817518 to 2025-09-02 15:42:08.817526
+2025-09-02 15:42:09,479 - src.backtesting.backtester - ERROR - Error generating signals for backtest: name 'current_price' is not defined
+2025-09-02 15:42:13,829 - src.backtesting.backtester - ERROR - Error generating signals for backtest: name 'current_price' is not defined
+2025-09-02 15:42:13,839 - src.backtesting.backtester - ERROR - Error generating signals for backtest: name 'current_price' is not defined
+2025-09-02 15:42:13,849 - src.backtesting.backtester - ERROR - Error generating signals for backtest: name 'current_price' is not defined
+2025-09-02 15:42:16,011 - src.backtesting.backtester - ERROR - Error generating signals for backtest: name 'current_price' is not defined
+2025-09-02 15:42:24,582 - src.backtesting.backtester - ERROR - Error generating signals for backtest: name 'current_price' is not defined
+2025-09-02 15:42:27,012 - src.backtesting.backtester - ERROR - Error generating signals for backtest: name 'current_price' is not defined
+2025-09-02 15:42:27,233 - src.backtesting.backtester - ERROR - Error generating signals for backtest: name 'current_price' is not defined
+2025-09-02 15:42:28,844 - src.backtesting.backtester - ERROR - Error generating signals for backtest: name 'current_price' is not defined
+2025-09-02 15:42:30,088 - src.backtesting.backtester - INFO - Backtest completed: 0.00% return, 0 trades, 0.0% win rate
+2025-09-02 15:42:30,090 - src.backtesting.backtester - INFO - Backtest results saved to backtest_results_BTCUSDT_20250902_154230.json

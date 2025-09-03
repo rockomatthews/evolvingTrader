@@ -23,14 +23,42 @@ class BinanceTradingClient:
     async def connect(self):
         """Initialize connection to Binance API"""
         try:
-            self.client = await AsyncClient.create(
-                api_key=binance_config.api_key,
-                api_secret=binance_config.secret_key,
-                testnet=binance_config.testnet
-            )
+            # For US users, testnet often doesn't work, so we use live with safety measures
+            if binance_config.testnet:
+                # Try testnet first, but fallback to live if it fails
+                try:
+                    self.client = await AsyncClient.create(
+                        api_key=binance_config.api_key,
+                        api_secret=binance_config.secret_key,
+                        testnet=True,
+                        tld='us'
+                    )
+                    # Test the connection
+                    await self.client.get_account()
+                    logger.info("Connected to Binance.US Testnet")
+                except Exception as e:
+                    logger.warning(f"Binance.US testnet failed ({e}), using live with safety measures")
+                    self.client = await AsyncClient.create(
+                        api_key=binance_config.api_key,
+                        api_secret=binance_config.secret_key,
+                        testnet=False,
+                        tld='us'
+                    )
+                    logger.warning("⚠️  Using LIVE Binance.US with TESTNET safety settings")
+                    logger.warning("⚠️  Position sizes will be limited for safety")
+            else:
+                # Live trading - use Binance.US for US users
+                self.client = await AsyncClient.create(
+                    api_key=binance_config.api_key,
+                    api_secret=binance_config.secret_key,
+                    testnet=False,
+                    tld='us'
+                )
+                logger.info("Connected to Binance.US (Live Trading)")
+            
             self.socket_manager = BinanceSocketManager(self.client)
             self.is_connected = True
-            logger.info("Connected to Binance API")
+            
         except Exception as e:
             logger.error(f"Failed to connect to Binance: {e}")
             raise

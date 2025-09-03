@@ -182,6 +182,7 @@ class EvolvingStrategy:
             df['ema_slow'] = ta.trend.EMAIndicator(df['close'], window=self.parameters.ema_slow).ema_indicator()
             
             # Volume indicators
+            df = df.copy()  # Fix SettingWithCopyWarning
             df['volume_ma'] = df['volume'].rolling(window=self.parameters.volume_ma_period).mean()
             df['volume_ratio'] = df['volume'] / df['volume_ma']
             

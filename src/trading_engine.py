@@ -8,7 +8,7 @@ from datetime import datetime, timedelta
 import signal
 import sys
 
-from src.strategy.evolving_strategy import EvolvingStrategy
+from src.strategy.optimized_strategy import OptimizedEvolvingStrategy as EvolvingStrategy
 from src.analysis.market_analyzer import MarketAnalyzer
 from src.memory.pinecone_client import PineconeMemoryClient
 from src.llm.strategy_analyzer import StrategyAnalyzer
